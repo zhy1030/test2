@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/set_edit_dialog"
+    android:paddingTop="20dp"
+    android:paddingLeft="20dp"
+    android:gravity="center_horizontal">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width ="100dp"
+            android:layout_height="match_parent"
+            android:text="台号:"
+            android:textSize="20dp"
+            android:gravity="center_vertical" />
+        <EditText
+            android:id="@+id/cur_set_table_d"
+            android:layout_width ="150dp"
+            android:layout_height="match_parent"
+            android:text="1"
+            android:inputType="number"
+            android:textSize="20dp"
+            android:gravity="center_vertical" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width ="100dp"
+            android:layout_height="match_parent"
+            android:text="局数:"
+            android:textSize="20dp"
+            android:gravity="center_vertical" />
+        <EditText
+            android:id="@+id/cur_set_number_d"
+            android:layout_width ="150dp"
+            android:layout_height="match_parent"
+            android:text="1"
+            android:inputType="number"
+            android:textSize="20dp"
+            android:gravity="center_vertical" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width ="100dp"
+            android:layout_height="match_parent"
+            android:text="跟踪员:"
+            android:textSize="20dp"
+            android:gravity="center_vertical" />
+        <EditText
+            android:id="@+id/cur_set_recorder_d"
+            android:layout_width ="150dp"
+            android:layout_height="match_parent"
+            android:text="小明"
+            android:textSize="20dp"
+            android:gravity="center_vertical" />
+    </LinearLayout>
+</LinearLayout>
