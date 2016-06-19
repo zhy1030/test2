@@ -19,42 +19,42 @@
             android:layout_height="wrap_content"
             android:background="#dedcd2" >
             <TextView
-                android:layout_width="150dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="台号"
                 android:textSize="20dp"
                 android:gravity="center_horizontal|center_vertical"
                 android:background="@drawable/cell" />
             <TextView
-                android:layout_width="150dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="局数"
                 android:textSize="20dp"
                 android:gravity="center_horizontal|center_vertical"
                 android:background="@drawable/cell" />
             <TextView
-                android:layout_width="150dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="时间"
                 android:textSize="20dp"
                 android:gravity="center_horizontal|center_vertical"
                 android:background="@drawable/cell"/>
             <TextView
-                android:layout_width="150dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="记录员"
                 android:textSize="20dp"
                 android:gravity="center_horizontal|center_vertical"
                 android:background="@drawable/cell"/>
             <TextView
-                android:layout_width="150dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="盈亏"
                 android:textSize="20dp"
                 android:gravity="center_horizontal|center_vertical"
                 android:background="@drawable/cell"/>
             <TextView
-                android:layout_width="150dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="报表"
                 android:textSize="20dp"
@@ -80,22 +80,22 @@
                 android:background="#dedcd2"
                 android:padding="0dp">
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="200dp"
                     android:layout_height="0dp"/>
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="200dp"
                     android:layout_height="0dp"/>
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="200dp"
                     android:layout_height="0dp"/>
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="200dp"
                     android:layout_height="0dp"/>
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="200dp"
                     android:layout_height="0dp"/>
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="200dp"
                     android:layout_height="0dp"/>
             </TableRow>
         </TableLayout>

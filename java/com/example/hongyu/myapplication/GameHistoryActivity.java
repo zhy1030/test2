@@ -48,6 +48,7 @@ public class GameHistoryActivity extends AppCompatActivity {
                 BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_GAME_NUMBER,
                 BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_TIME,
                 BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_RESULT,
+                BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_RESULT_DUI,
                 BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_GAIN,
                 BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_STAT_SHORT,
         };
@@ -67,6 +68,7 @@ public class GameHistoryActivity extends AppCompatActivity {
             Integer gameNo;
             String gameTime;
             String gameResult;
+            String gameResultDui;
             Integer gameGain;
             String gameStat;
             if (gameCursor.getCount() == 0) {
@@ -76,9 +78,10 @@ public class GameHistoryActivity extends AppCompatActivity {
                 gameNo = gameCursor.getInt(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_GAME_NUMBER));
                 gameTime = gameCursor.getString(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_TIME));
                 gameResult = gameCursor.getString(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_RESULT));
+                gameResultDui = gameCursor.getString(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_RESULT_DUI));
                 gameGain = gameCursor.getInt(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_GAIN));
                 gameStat = gameCursor.getString(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_STAT_SHORT));
-                addResultRow(gameNo, gameTime, gameResult, gameGain, gameStat);
+                addResultRow(gameNo, gameTime, gameResult, gameResultDui, gameGain, gameStat);
             }
         }
         gameCursor.close();
@@ -102,53 +105,65 @@ public class GameHistoryActivity extends AppCompatActivity {
         mDb.close();
     }
 
-    private void addResultRow(Integer _gameNo, String _gameTime, String _gameResult, Integer _gameGain, String _gameStat) {
+    private void addResultRow(Integer _gameNo, String _gameTime, String _gameResult, String _gameResultDui, Integer _gameGain, String _gameStat) {
         TableRow tableRow = new TableRow(this);
         RelativeLayout.LayoutParams row_params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         tableRow.setLayoutParams(row_params);
 
-        TextView gameNo = new TextView(this);
+        final TextView gameNo = new TextView(this);
         gameNo.setText(_gameNo.toString());
         gameNo.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         gameNo.setBackgroundColor(Color.rgb(0xff, 0xff, 0xff));
-        gameNo.setGravity(Gravity.CENTER);
+        gameNo.setGravity(Gravity.CENTER_HORIZONTAL);
         gameNo.setBackgroundResource(R.drawable.cell);
         tableRow.addView(gameNo);
 
-        TextView gameTime = new TextView(this);
+        final TextView gameTime = new TextView(this);
         gameTime.setText(_gameTime);
         gameTime.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         gameTime.setBackgroundColor(Color.rgb(0xff, 0xff, 0xff));
-        gameTime.setGravity(Gravity.CENTER);
+        gameTime.setGravity(Gravity.CENTER_HORIZONTAL);
         gameTime.setBackgroundResource(R.drawable.cell);
         tableRow.addView(gameTime);
 
-        TextView gameResult = new TextView(this);
-        gameResult.setText(_gameResult);
+        final TextView gameResult = new TextView(this);
+        gameResult.setText(_gameResult + " " +_gameResultDui);
         gameResult.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         gameResult.setBackgroundColor(Color.rgb(0xff, 0xff, 0xff));
-        gameResult.setGravity(Gravity.CENTER);
+        gameResult.setGravity(Gravity.CENTER_HORIZONTAL);
         gameResult.setBackgroundResource(R.drawable.cell);
         tableRow.addView(gameResult);
 
-        TextView gameGain = new TextView(this);
+        final TextView gameGain = new TextView(this);
         gameGain.setText(_gameGain.toString());
         gameGain.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         gameGain.setBackgroundColor(Color.rgb(0xff, 0xff, 0xff));
-        gameGain.setGravity(Gravity.CENTER);
+        gameGain.setGravity(Gravity.CENTER_HORIZONTAL);
         gameGain.setBackgroundResource(R.drawable.cell);
         tableRow.addView(gameGain);
 
-        TextView gameStat = new TextView(this);
+        final TextView gameStat = new TextView(this);
         gameStat.setText(_gameStat);
         gameStat.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         gameStat.setBackgroundColor(Color.rgb(0xff, 0xff, 0xff));
-        gameStat.setGravity(Gravity.CENTER);
+        gameStat.setGravity(Gravity.NO_GRAVITY);
         gameStat.setBackgroundResource(R.drawable.cell);
+        TextView refView = (TextView) findViewById(R.id.stat_width_ref);
+        gameStat.setMaxWidth(refView.getWidth());
         tableRow.addView(gameStat);
 
         TableLayout recordTB = (TableLayout) findViewById(R.id.game_history_tb);
         recordTB.addView(tableRow, new TableLayout.LayoutParams(WC, MP));
 
+        gameStat.post(new Runnable() {
+            public void run() {
+                Integer height = gameStat.getHeight();
+                Log.d("hongyu", "height is " + height);
+                gameGain.setHeight(height);
+                gameResult.setHeight(height);
+                gameTime.setHeight(height);
+                gameNo.setHeight(height);
+            }
+        });
     }
 }

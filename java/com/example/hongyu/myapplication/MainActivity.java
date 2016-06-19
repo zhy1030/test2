@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -62,11 +63,12 @@ public class MainActivity extends AppCompatActivity {
         Integer table_number;
         String name;
         String bet;
-        String amount;
+        //String amount;
     }
 
     private ArrayList<PlayerBet> mPlayerBetList = new ArrayList();
     private String mGameResult;
+    private String mGameResultDui;
     private String mGameStat;
     private String mGameStatShort;
     private Integer mGameGain;
@@ -83,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
     private final String[] mDeviceList = {
       "c6fe903235b06716", // 虚拟机
       "115ee591b7e505ac", // Samsung tab E
-      "8a9c713404bc3c2e" // Samsung tab E
+      "8a9c713404bc3c2e", // Samsung tab E
+      "1a2318349d2b2e53", // x16
     };
 
     @Override
@@ -98,10 +101,8 @@ public class MainActivity extends AppCompatActivity {
         boolean match = false;
         Log.d("hongyu", "device_id is " + device);
         for (int i = 0; i < mDeviceList.length; i++) {
-            Log.d("hongyu", "mDeviceList i=" + i + " id is " + mDeviceList[i]);
             if (mDeviceList[i].equals(device)) {
                 match = true;
-                Log.d("hongyu", "device_id matched! i=" + i);
             }
         }
         if (!match) {
@@ -165,6 +166,76 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // init bet amount click listener
+        TextView textView;
+        for (int i = 0; i < 9; i++) {
+            textView = (TextView) findViewById(R.id.tbr3c1 + i);
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showPlayerBetDialog(view);
+                }
+            });
+        }
+        for (int i = 0; i < 9; i++) {
+            textView = (TextView) findViewById(R.id.tbr7c1 + i);
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showPlayerBetDialog(view);
+                }
+            });
+        }
+
+        // init player name click listener
+        for (int i = 0; i < 9; i++) {
+            textView = (TextView) findViewById(R.id.tbr2c1 + i);
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showPlayerEditDialog();
+                }
+            });
+        }
+        // init player name click listener
+        for (int i = 0; i < 9; i++) {
+            textView = (TextView) findViewById(R.id.tbr6c1 + i);
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showPlayerEditDialog();
+                }
+            });
+        }
+
+        // init the spinners
+        Spinner spinner;
+        spinner =  (Spinner) findViewById(R.id.game_result);
+        String[] gameResutArray = new String[]{
+                "",
+                "庄",
+                "闲",
+                "和",
+                "庄6点"
+        };
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
+                this,R.layout.spinner_item, gameResutArray
+        );
+        spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
+        spinner.setAdapter(spinnerArrayAdapter);
+
+        spinner =  (Spinner) findViewById(R.id.game_result_dui);
+        String[] gameDuiResutArray = new String[]{
+                "",
+                "庄对",
+                "闲对",
+        };
+        ArrayAdapter<String> spinnerDuiArrayAdapter = new ArrayAdapter<String>(
+                this,R.layout.spinner_item, gameDuiResutArray
+        );
+        spinnerArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
+        spinner.setAdapter(spinnerDuiArrayAdapter);
+
         loadCurrent();
 
     }
@@ -176,16 +247,17 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         // Delayed removal of status and navigation bar
 
+        /*
         // Note that some of these constants are new as of API 16 (Jelly Bean)
         // and API 19 (KitKat). It is safe to use them, as they are inlined
         // at compile-time and do nothing on earlier devices.
         mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
                 | View.SYSTEM_UI_FLAG_FULLSCREEN
-                //| View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
-
+        */
     }
 
     @Override
@@ -369,6 +441,84 @@ public class MainActivity extends AppCompatActivity {
         builder.create().show();
     }
 
+    private void showPlayerBetDialog(final View view) {
+        final TextView amountTextView = (TextView) view;
+        Log.d("hongyu", "clicked, view content is " + amountTextView.getText());
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        LayoutInflater inflater = getLayoutInflater();
+        final View mPlayerBetView = inflater.inflate(R.layout.player_bet_dialog,
+                (ViewGroup) findViewById(R.id.player_bet_dialog));
+        builder.setView(mPlayerBetView);
+
+        String string = amountTextView.getText().toString();
+        PlayerBetResult playerBetResult = new PlayerBetResult(string);
+
+        final EditText editTextZhuang = (EditText) mPlayerBetView.findViewById(R.id.player_bet_zhuang);
+        final EditText editTextXian = (EditText) mPlayerBetView.findViewById(R.id.player_bet_xian);
+        final EditText editTextHe = (EditText) mPlayerBetView.findViewById(R.id.player_bet_he);
+        final EditText editTextZhuangDui = (EditText) mPlayerBetView.findViewById(R.id.player_bet_zhuangdui);
+        final EditText editTextXiandui = (EditText) mPlayerBetView.findViewById(R.id.player_bet_xiandui);
+        final Button cleanBtn = (Button) mPlayerBetView.findViewById(R.id.clean_btn);
+
+        cleanBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editTextZhuang.setText("");
+                editTextXian.setText("");
+                editTextHe.setText("");
+                editTextZhuangDui.setText("");
+                editTextXiandui.setText("");
+            }
+        });
+
+        editTextZhuang.setText(playerBetResult.mZhuang.toString());
+        editTextXian.setText(playerBetResult.mXian.toString());
+        editTextHe.setText(playerBetResult.mHe.toString());
+        editTextZhuangDui.setText(playerBetResult.mZhuangDui.toString());
+        editTextXiandui.setText(playerBetResult.mXianDui.toString());
+
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String resultString = "";
+                String string;
+
+                string = editTextZhuang.getText().toString();
+                if (!string.equals("") && !string.equals("0")) {
+                    resultString += "庄:" + string + ";";
+                }
+                string = editTextXian.getText().toString();
+                if (!string.equals("") && !string.equals("0")) {
+                    resultString += "闲:" + string + ";";
+                }
+                string = editTextHe.getText().toString();
+                if (!string.equals("") && !string.equals("0")) {
+                    resultString += "和:" + string + ";";
+                }
+                string = editTextZhuangDui.getText().toString();
+                if (!string.equals("") && !string.equals("0")) {
+                    resultString += "庄对:" + string + ";";
+                }
+                string = editTextXiandui.getText().toString();
+                if (!string.equals("") && !string.equals("0")) {
+                    resultString += "闲对:" + string + ";";
+                }
+                amountTextView.setText(resultString);
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
+
+    }
+
     private void showSetEndDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("游戏结束");
@@ -406,6 +556,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(mContext, "请输入结果", Toast.LENGTH_SHORT).show();
             return;
         }
+        spinner = (Spinner) findViewById(R.id.game_result_dui);
+        mGameResultDui = spinner.getSelectedItem().toString();
 
         updatePlayerBetList();
         // Log.d("hongyu", "Total player is " + mPlayerBetList.size());
@@ -420,21 +572,63 @@ public class MainActivity extends AppCompatActivity {
             PlayerBet playerBet = (PlayerBet) it.next();
             Integer playerGain = 0;
             // Log.d("hongyu", "current player is " + playerBet.table_number);
-            if (mGameResult.equals("庄6") && playerBet.bet.equals("庄")) {
-                playerGain = Integer.parseInt(playerBet.amount) / 2;
-                //Log.d("hongyu", "庄6 " + playerGain);
-            } else if (playerBet.bet.equals(mGameResult)) {
-                playerGain = Integer.parseInt(playerBet.amount);
-                //Log.d("hongyu", "win " + playerGain);
-            } else {
-                playerGain -= Integer.parseInt(playerBet.amount);
-                //Log.d("hongyu", "lost " + playerGain);
+            PlayerBetResult playerBetResult = new PlayerBetResult(playerBet.bet);
+
+            switch (mGameResult) {
+                case "庄":
+                    if (playerBetResult.mZhuang != 0) {
+                        playerGain += playerBetResult.mZhuang;
+                    }
+                    playerGain -= playerBetResult.mXian;
+                    playerGain -= playerBetResult.mHe;
+                    break;
+                case "闲":
+                    if (playerBetResult.mXian != 0) {
+                        playerGain += playerBetResult.mXian;
+                    }
+                    playerGain -= playerBetResult.mZhuang;
+                    playerGain -= playerBetResult.mHe;
+                    break;
+                case "和":
+                    if (playerBetResult.mHe != 0) {
+                        playerGain += playerBetResult.mHe*8;
+                    }
+                    playerGain -= playerBetResult.mZhuang;
+                    playerGain -= playerBetResult.mXian;
+                    break;
+                case "庄6点":
+                    if (playerBetResult.mZhuang != 0) {
+                        playerGain += playerBetResult.mZhuang / 2;
+                    }
+                    playerGain -= playerBetResult.mXian;
+                    playerGain -= playerBetResult.mHe;
+                    break;
+                default:
             }
+
+            switch (mGameResultDui) {
+                case "庄对":
+                    if (playerBetResult.mZhuangDui != 0) {
+                        playerGain += playerBetResult.mZhuang * 11;
+                    }
+                    playerGain -= playerBetResult.mXianDui;
+                    break;
+                case "闲对":
+                    if (playerBetResult.mXianDui != 0) {
+                        playerGain += playerBetResult.mXianDui * 11;
+                    }
+                    playerGain -= playerBetResult.mZhuangDui;
+                    break;
+                default:
+                    playerGain -= playerBetResult.mZhuangDui;
+                    playerGain -= playerBetResult.mXianDui;
+            }
+
             gameStatShort = gameStatShort + playerBet.name + ":" + playerGain + "; ";
             if (it.hasNext()) {
-                gameStat = gameStat + "座位号:" + playerBet.table_number + ", 玩家:" + playerBet.name + ", 下注数量:" + playerBet.amount + ", 下注庄闲:" + playerBet.bet + ", 输赢: " + playerGain + ";\n";
+                gameStat = gameStat + "座位号:" + playerBet.table_number + ", 玩家:" + playerBet.name + ", 下注数量:" + playerBet.bet + ", 输赢: " + playerGain + ";\n";
             } else {
-                gameStat = gameStat + "座位号:" + playerBet.table_number + ", 玩家:" + playerBet.name + ", 下注数量:" + playerBet.amount + ", 下注庄闲:" + playerBet.bet + ", 输赢: " + playerGain + ";";
+                gameStat = gameStat + "座位号:" + playerBet.table_number + ", 玩家:" + playerBet.name + ", 下注数量:" + playerBet.bet + ", 输赢: " + playerGain + ";";
             }
             mGameGain -= playerGain;
         }
@@ -447,7 +641,7 @@ public class MainActivity extends AppCompatActivity {
         final View mGameEndView = inflater.inflate(R.layout.game_end_dialog,
                 (ViewGroup) findViewById(R.id.game_end_dialog));
         textView = (TextView) mGameEndView.findViewById(R.id.game_result);
-        textView.setText(mGameResult);
+        textView.setText(mGameResult + " " + mGameResultDui);
         textView = (TextView) mGameEndView.findViewById(R.id.game_stat);
         textView.setText(mGameStat);
         textView = (TextView) mGameEndView.findViewById(R.id.game_gain);
@@ -459,13 +653,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                EditText editText_dlg;
-                TextView textView_dlg;
-                Spinner spinner_dlg;
-
                 // put data into data base
                 recordGameData();
-                addResultRow(mGameNo, mGameTime, mGameResult, mGameGain, mGameStatShort);
+                addResultRow(mGameNo, mGameTime, mGameResult, mGameResultDui, mGameGain, mGameStatShort);
                 updateSetData();
 
                 resetGame();
@@ -489,6 +679,7 @@ public class MainActivity extends AppCompatActivity {
         values.put(BaccaratDB.BaccaraGameTBColumns.COLUMN_GAME_NUMBER, mGameNo);
         values.put(BaccaratDB.BaccaraGameTBColumns.COLUMN_TIME, mGameTime);
         values.put(BaccaratDB.BaccaraGameTBColumns.COLUMN_RESULT, mGameResult);
+        values.put(BaccaratDB.BaccaraGameTBColumns.COLUMN_RESULT_DUI, mGameResultDui);
         values.put(BaccaratDB.BaccaraGameTBColumns.COLUMN_GAIN, mGameGain);
         values.put(BaccaratDB.BaccaraGameTBColumns.COLUMN_STAT_SHORT, mGameStatShort);
         values.put(BaccaratDB.BaccaraGameTBColumns.COLUMN_STAT, mGameStat);
@@ -497,53 +688,66 @@ public class MainActivity extends AppCompatActivity {
                 BaccaratDB.BaccaraGameTBColumns.TABLE_NAME, null, values);
     }
 
-    private void addResultRow(Integer _gameNo, String _gameTime, String _gameResult, Integer _gameGain, String _gameStat) {
+    private void addResultRow(Integer _gameNo, String _gameTime, String _gameResult, String _gameResultDui, Integer _gameGain, String _gameStat) {
         TableRow tableRow = new TableRow(this);
         RelativeLayout.LayoutParams row_params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         tableRow.setLayoutParams(row_params);
 
-        TextView gameNo = new TextView(this);
+        final TextView gameNo = new TextView(this);
         gameNo.setText(_gameNo.toString());
         gameNo.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         gameNo.setBackgroundColor(Color.rgb(0xff, 0xff, 0xff));
-        gameNo.setGravity(Gravity.CENTER);
+        gameNo.setGravity(Gravity.CENTER_HORIZONTAL);
         gameNo.setBackgroundResource(R.drawable.cell);
         tableRow.addView(gameNo);
 
-        TextView gameTime = new TextView(this);
+        final TextView gameTime = new TextView(this);
         gameTime.setText(_gameTime);
         gameTime.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         gameTime.setBackgroundColor(Color.rgb(0xff, 0xff, 0xff));
-        gameTime.setGravity(Gravity.CENTER);
+        gameTime.setGravity(Gravity.CENTER_HORIZONTAL);
         gameTime.setBackgroundResource(R.drawable.cell);
         tableRow.addView(gameTime);
 
-        TextView gameResult = new TextView(this);
-        gameResult.setText(_gameResult);
+        final TextView gameResult = new TextView(this);
+        gameResult.setText(_gameResult + " " + _gameResultDui);
         gameResult.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         gameResult.setBackgroundColor(Color.rgb(0xff, 0xff, 0xff));
-        gameResult.setGravity(Gravity.CENTER);
+        gameResult.setGravity(Gravity.CENTER_HORIZONTAL);
         gameResult.setBackgroundResource(R.drawable.cell);
         tableRow.addView(gameResult);
 
-        TextView gameGain = new TextView(this);
+        final TextView gameGain = new TextView(this);
         gameGain.setText(_gameGain.toString());
         gameGain.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         gameGain.setBackgroundColor(Color.rgb(0xff, 0xff, 0xff));
-        gameGain.setGravity(Gravity.CENTER);
+        gameGain.setGravity(Gravity.CENTER_HORIZONTAL);
         gameGain.setBackgroundResource(R.drawable.cell);
         tableRow.addView(gameGain);
 
-        TextView gameStat = new TextView(this);
+        final TextView gameStat = new TextView(this);
         gameStat.setText(_gameStat);
         gameStat.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
         gameStat.setBackgroundColor(Color.rgb(0xff, 0xff, 0xff));
-        gameStat.setGravity(Gravity.CENTER);
+        gameStat.setGravity(Gravity.NO_GRAVITY);
         gameStat.setBackgroundResource(R.drawable.cell);
+        TextView refView = (TextView) findViewById(R.id.stat_width_ref);
+        gameStat.setMaxWidth(refView.getWidth());
         tableRow.addView(gameStat);
 
         TableLayout recordTB = (TableLayout) findViewById(R.id.rcd_tb);
         recordTB.addView(tableRow, new TableLayout.LayoutParams(WC, MP));
+
+        gameStat.post(new Runnable() {
+            public void run() {
+                Integer height = gameStat.getHeight();
+                Log.d("hongyu", "height is " + height);
+                gameGain.setHeight(height);
+                gameResult.setHeight(height);
+                gameTime.setHeight(height);
+                gameNo.setHeight(height);
+            }
+        });
 
         final ScrollView scrollingView = (ScrollView) findViewById(R.id.result_scrollview);
         scrollingView.post(new Runnable() {
@@ -582,6 +786,9 @@ public class MainActivity extends AppCompatActivity {
         textView.setText(mGameNo.toString());
         mGameResult = "";
         Spinner spinner = (Spinner) findViewById(R.id.game_result);
+        spinner.setSelection(0);
+        mGameResultDui = "";
+        spinner = (Spinner) findViewById(R.id.game_result_dui);
         spinner.setSelection(0);
         mGameGain = 0;
         mGameStat = "";
@@ -625,21 +832,14 @@ public class MainActivity extends AppCompatActivity {
             textView.setText("");
         }
         for (int i = 0; i < 9; i++) {
-            editText = (EditText) findViewById(R.id.tbr3c1 + i);
-            editText.setText("");
+            textView = (TextView) findViewById(R.id.tbr3c1 + i);
+            textView.setText("");
         }
         for (int i = 0; i < 9; i++) {
-            editText = (EditText) findViewById(R.id.tbr7c1 + i);
-            editText.setText("");
+            textView = (TextView) findViewById(R.id.tbr7c1 + i);
+            textView.setText("");
         }
-        for (int i = 0; i < 9; i++) {
-            spinner = (Spinner) findViewById(R.id.tbr4c1 + i);
-            spinner.setSelection(0);
-        }
-        for (int i = 0; i < 9; i++) {
-            spinner = (Spinner) findViewById(R.id.tbr8c1 + i);
-            spinner.setSelection(0);
-        }
+
         // clean game data base
         mDb.delete(BaccaratDB.BaccaraGameTBColumns.TABLE_NAME, null, null);
         cleanResultRows();
@@ -753,20 +953,12 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.game_number);
         textView.setText(mGameNo.toString());
         for (int i = 0; i < 9; i++) {
-            editText = (EditText) findViewById(R.id.tbr3c1 + i);
-            editText.setText("");
+            textView = (TextView) findViewById(R.id.tbr3c1 + i);
+            textView.setText("");
         }
         for (int i = 0; i < 9; i++) {
-            editText = (EditText) findViewById(R.id.tbr7c1 + i);
-            editText.setText("");
-        }
-        for (int i = 0; i < 9; i++) {
-            spinner = (Spinner) findViewById(R.id.tbr4c1 + i);
-            spinner.setSelection(0);
-        }
-        for (int i = 0; i < 9; i++) {
-            spinner = (Spinner) findViewById(R.id.tbr8c1 + i);
-            spinner.setSelection(0);
+            textView = (TextView) findViewById(R.id.tbr7c1 + i);
+            textView.setText("");
         }
         // clean game data base
         mDb.delete(BaccaratDB.BaccaraGameTBColumns.TABLE_NAME, null, null);
@@ -813,12 +1005,10 @@ public class MainActivity extends AppCompatActivity {
             ContentValues values = new ContentValues();
             values.put(BaccaratDB.BaccaraPlayerBetTBColumns.COLUMN_PLAYER_ID, playerBet.table_number);
             values.put(BaccaratDB.BaccaraPlayerBetTBColumns.COLUMN_PLAYER_NAME, playerBet.name);
-            values.put(BaccaratDB.BaccaraPlayerBetTBColumns.COLUMN_AMOUNT, playerBet.amount);
             values.put(BaccaratDB.BaccaraPlayerBetTBColumns.COLUMN_BET, playerBet.bet);
             mDb.insert(BaccaratDB.BaccaraPlayerBetTBColumns.TABLE_NAME, null, values);
         }
         // backup game history, already backuped in recordGameData;
-
     }
 
     private void loadCurrent() {
@@ -882,7 +1072,6 @@ public class MainActivity extends AppCompatActivity {
         String[] projection = {
                 BaccaratDB.BaccaraPlayerBetTBColumns.COLUMN_PLAYER_ID,
                 BaccaratDB.BaccaraPlayerBetTBColumns.COLUMN_PLAYER_NAME,
-                BaccaratDB.BaccaraPlayerBetTBColumns.COLUMN_AMOUNT,
                 BaccaratDB.BaccaraPlayerBetTBColumns.COLUMN_BET,
         };
         String sortOrder =
@@ -899,47 +1088,28 @@ public class MainActivity extends AppCompatActivity {
         );
         Integer playerId;
         String name;
-        String amount;
         String bet;
         if (c != null) {
             while (c.moveToNext()) {
                 playerId = c.getInt(c.getColumnIndex(BaccaratDB.BaccaraPlayerBetTBColumns.COLUMN_PLAYER_ID));
                 name = c.getString(c.getColumnIndex(BaccaratDB.BaccaraPlayerBetTBColumns.COLUMN_PLAYER_NAME));
-                amount = c.getString(c.getColumnIndex(BaccaratDB.BaccaraPlayerBetTBColumns.COLUMN_AMOUNT));
                 bet = c.getString(c.getColumnIndex(BaccaratDB.BaccaraPlayerBetTBColumns.COLUMN_BET));
 
                 TextView tmpTextView;
                 EditText tmpEditText;
-                Spinner tmpSpinner;
                 //Log.d("hongyu", "player is " + playerId);
                 playerId--;
                 if (playerId < 9) {
                     tmpTextView = (TextView) findViewById(R.id.tbr2c1 + playerId);
                     tmpTextView.setText(name);
-                    tmpEditText = (EditText) findViewById(R.id.tbr3c1 + playerId);
-                    tmpEditText.setText(amount);
-                    tmpSpinner = (Spinner) findViewById(R.id.tbr4c1 + playerId);
-                    if (bet.equals("庄")) {
-                        tmpSpinner.setSelection(1);
-                    } else if (bet.equals("闲")) {
-                        tmpSpinner.setSelection(2);
-                    } else if (bet.equals("和")) {
-                        tmpSpinner.setSelection(3);
-                    }
+                    tmpTextView = (TextView) findViewById(R.id.tbr3c1 + playerId);
+                    tmpTextView.setText(bet);
                 } else {
                     playerId -= 9;
                     tmpTextView = (TextView) findViewById(R.id.tbr6c1 + playerId);
                     tmpTextView.setText(name);
-                    tmpEditText = (EditText) findViewById(R.id.tbr7c1 + playerId);
-                    tmpEditText.setText(amount);
-                    tmpSpinner = (Spinner) findViewById(R.id.tbr8c1 + playerId);
-                    if (bet.equals("庄")) {
-                        tmpSpinner.setSelection(1);
-                    } else if (bet.equals("闲")) {
-                        tmpSpinner.setSelection(2);
-                    } else if (bet.equals("和")) {
-                        tmpSpinner.setSelection(3);
-                    }
+                    tmpTextView = (TextView) findViewById(R.id.tbr7c1 + playerId);
+                    tmpTextView.setText(bet);
                 }
             }
         } else
@@ -951,6 +1121,7 @@ public class MainActivity extends AppCompatActivity {
                 BaccaratDB.BaccaraGameTBColumns.COLUMN_GAME_NUMBER,
                 BaccaratDB.BaccaraGameTBColumns.COLUMN_TIME,
                 BaccaratDB.BaccaraGameTBColumns.COLUMN_RESULT,
+                BaccaratDB.BaccaraGameTBColumns.COLUMN_RESULT_DUI,
                 BaccaratDB.BaccaraGameTBColumns.COLUMN_GAIN,
                 BaccaratDB.BaccaraGameTBColumns.COLUMN_STAT_SHORT,
         };
@@ -969,6 +1140,7 @@ public class MainActivity extends AppCompatActivity {
             Integer gameNo;
             String gameTime;
             String gameResult;
+            String gameResultDui;
             Integer gameGain;
             String gameStat;
             if (gameCursor.getCount() == 0) {
@@ -979,9 +1151,10 @@ public class MainActivity extends AppCompatActivity {
                 gameNo = gameCursor.getInt(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameTBColumns.COLUMN_GAME_NUMBER));
                 gameTime = gameCursor.getString(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameTBColumns.COLUMN_TIME));
                 gameResult = gameCursor.getString(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameTBColumns.COLUMN_RESULT));
+                gameResultDui = gameCursor.getString(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameTBColumns.COLUMN_RESULT_DUI));
                 gameGain = gameCursor.getInt(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameTBColumns.COLUMN_GAIN));
                 gameStat = gameCursor.getString(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameTBColumns.COLUMN_STAT_SHORT));
-                addResultRow(gameNo, gameTime, gameResult, gameGain, gameStat);
+                addResultRow(gameNo, gameTime, gameResult, gameResultDui, gameGain, gameStat);
             }
         }
         gameCursor.close();
@@ -1000,49 +1173,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updatePlayerBetList() {
-        EditText editText;
         TextView tableNumberView;
         TextView nameView;
-        TextView textView;
-        Spinner spinner;
+        TextView betView;
 
         mPlayerBetList.clear();
         mGameGain = 0;
+
         for (int i = 0; i < 9; i++) {
             tableNumberView = (TextView) findViewById(R.id.tbr1c1 + i);
             nameView = (TextView) findViewById(R.id.tbr2c1 + i);
-            editText = (EditText) findViewById(R.id.tbr3c1 + i);
-            spinner = (Spinner) findViewById(R.id.tbr4c1 + i);
-            if (nameView.getText().toString().equals("") || spinner.getSelectedItem().toString().equals("") || editText.getText().toString().equals("")) {
-                if (!nameView.getText().toString().equals("") || !spinner.getSelectedItem().toString().equals("") || !editText.getText().toString().equals("")) {
-                    //Toast.makeText(mContext, "提示: 座位号"+ tableNumberView.getText().toString() +"玩家设置不正确", Toast.LENGTH_SHORT).show();
-                }
+            betView = (TextView) findViewById(R.id.tbr3c1 + i);
+            if (nameView.getText().toString().equals("") || betView.getText().toString().equals("")) {
                 continue;
             }
             PlayerBet playerBet = new PlayerBet();
             playerBet.table_number = Integer.valueOf(tableNumberView.getText().toString()).intValue();
             playerBet.name = nameView.getText().toString();
-            playerBet.bet = spinner.getSelectedItem().toString();
-            playerBet.amount = editText.getText().toString();
+            playerBet.bet = betView.getText().toString();
             mPlayerBetList.add(playerBet);
         }
 
         for (int i = 0; i < 9; i++) {
             tableNumberView = (TextView) findViewById(R.id.tbr5c1 + i);
             nameView = (TextView) findViewById(R.id.tbr6c1 + i);
-            editText = (EditText) findViewById(R.id.tbr7c1 + i);
-            spinner = (Spinner) findViewById(R.id.tbr8c1 + i);
-            if (nameView.getText().toString().equals("") || spinner.getSelectedItem().toString().equals("") || editText.getText().toString().equals("")) {
-                if (!nameView.getText().toString().equals("") || !spinner.getSelectedItem().toString().equals("") || !editText.getText().toString().equals("")) {
-                    //Toast.makeText(mContext, "提示: 座位号"+ tableNumberView.getText().toString() +"设置不正确", Toast.LENGTH_SHORT).show();
-                }
+            betView = (TextView) findViewById(R.id.tbr7c1 + i);
+            if (nameView.getText().toString().equals("") || betView.getText().toString().equals("")) {
                 continue;
             }
             PlayerBet playerBet = new PlayerBet();
-            playerBet.table_number = Integer.valueOf(tableNumberView.getText().toString()).intValue();
+            Log.d("hongyu", "error i " + i+tableNumberView.getText().toString());
+            playerBet.table_number = Integer.parseInt(tableNumberView.getText().toString());
             playerBet.name = nameView.getText().toString();
-            playerBet.bet = spinner.getSelectedItem().toString();
-            playerBet.amount = editText.getText().toString();
+            playerBet.bet = betView.getText().toString();
             mPlayerBetList.add(playerBet);
         }
     }

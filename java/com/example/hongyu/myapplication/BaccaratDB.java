@@ -14,6 +14,7 @@ public class BaccaratDB {
         public static final String COLUMN_GAME_NUMBER = "game_number";
         public static final String COLUMN_TIME = "time";
         public static final String COLUMN_RESULT = "result";
+        public static final String COLUMN_RESULT_DUI = "result_dui";
         public static final String COLUMN_GAIN = "gain";
         public static final String COLUMN_STAT_SHORT = "stat_short";
         public static final String COLUMN_STAT = "stat";
@@ -37,7 +38,6 @@ public class BaccaratDB {
         public static final String TABLE_NAME = "baccara_player_bet";
         public static final String COLUMN_PLAYER_ID = "player_id";
         public static final String COLUMN_PLAYER_NAME = "player_name";
-        public static final String COLUMN_AMOUNT = "amount";  //出价数量
         public static final String COLUMN_BET = "bet"; // 出价结果
     }
 
@@ -59,6 +59,7 @@ public class BaccaratDB {
         public static final String COLUMN_GAME_NUMBER = "game_number";
         public static final String COLUMN_TIME = "time";
         public static final String COLUMN_RESULT = "result";
+        public static final String COLUMN_RESULT_DUI = "result_dui";
         public static final String COLUMN_GAIN = "gain";
         public static final String COLUMN_STAT_SHORT = "stat_short";
         public static final String COLUMN_STAT = "stat";
@@ -70,6 +71,7 @@ public class BaccaratDB {
                     BaccaraGameTBColumns.COLUMN_GAME_NUMBER + " INTEGER, " +
                     BaccaraGameTBColumns.COLUMN_TIME + " TEXT, " +
                     BaccaraGameTBColumns.COLUMN_RESULT + " TEXT, " +
+                    BaccaraGameTBColumns.COLUMN_RESULT_DUI + " TEXT, " +
                     BaccaraGameTBColumns.COLUMN_GAIN + " INTEGER, " +
                     BaccaraGameTBColumns.COLUMN_STAT_SHORT + " TEXT, " +
                     BaccaraGameTBColumns.COLUMN_STAT + " TEXT)";
@@ -91,7 +93,6 @@ public class BaccaratDB {
                     BaccaraPlayerBetTBColumns._ID + " INTEGER PRIMARY KEY, " +
                     BaccaraPlayerBetTBColumns.COLUMN_PLAYER_ID + " INTEGER, " +
                     BaccaraPlayerBetTBColumns.COLUMN_PLAYER_NAME + " TEXT, " +
-                    BaccaraPlayerBetTBColumns.COLUMN_AMOUNT + " TEXT, " +
                     BaccaraPlayerBetTBColumns.COLUMN_BET + " TEXT)";
 
 
@@ -112,6 +113,7 @@ public class BaccaratDB {
                     BaccaraGameHistoryTBColumns.COLUMN_GAME_NUMBER + " INTEGER, " +
                     BaccaraGameHistoryTBColumns.COLUMN_TIME + " TEXT, " +
                     BaccaraGameHistoryTBColumns.COLUMN_RESULT + " TEXT, " +
+                    BaccaraGameHistoryTBColumns.COLUMN_RESULT_DUI + " TEXT, " +
                     BaccaraGameHistoryTBColumns.COLUMN_GAIN + " INTEGER, " +
                     BaccaraGameHistoryTBColumns.COLUMN_STAT_SHORT + " TEXT, " +
                     BaccaraGameHistoryTBColumns.COLUMN_STAT + " TEXT)";

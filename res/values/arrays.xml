@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="player_result">
+    <string-array name="game_result">
         <item></item>
         <item>庄</item>
+        <item>庄6点</item>
         <item>闲</item>
         <item>和</item>
     </string-array>
 
-    <string-array name="game_result">
+    <string-array name="game_result_dui">
         <item></item>
-        <item>庄</item>
-        <item>庄6</item>
-        <item>闲</item>
-        <item>和</item>
+        <item>庄对</item>
+        <item>闲对</item>
     </string-array>
 </resources>
