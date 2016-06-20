@@ -591,7 +591,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout2"
-        android:id="@+id/tableLayout"
+        android:id="@+id/rcd_tb_title"
         android:layout_marginTop="5dp">
         <TableRow
             android:layout_width="match_parent"
@@ -645,7 +645,7 @@
         android:layout_height="match_parent"
         android:id="@+id/result_scrollview"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/tableLayout">
+        android:layout_below="@+id/rcd_tb_title">
 
         <TableLayout
             android:layout_width="match_parent"

@@ -1193,7 +1193,7 @@ public class MainActivity extends AppCompatActivity {
             tableNumberView = (TextView) findViewById(R.id.tbr1c1 + i);
             nameView = (TextView) findViewById(R.id.tbr2c1 + i);
             betView = (TextView) findViewById(R.id.tbr3c1 + i);
-            if (nameView.getText().toString().equals("") || betView.getText().toString().equals("")) {
+            if (nameView.getText().toString().equals("")) {
                 continue;
             }
             PlayerBet playerBet = new PlayerBet();
@@ -1207,7 +1207,7 @@ public class MainActivity extends AppCompatActivity {
             tableNumberView = (TextView) findViewById(R.id.tbr5c1 + i);
             nameView = (TextView) findViewById(R.id.tbr6c1 + i);
             betView = (TextView) findViewById(R.id.tbr7c1 + i);
-            if (nameView.getText().toString().equals("") || betView.getText().toString().equals("")) {
+            if (nameView.getText().toString().equals("")) {
                 continue;
             }
             PlayerBet playerBet = new PlayerBet();
