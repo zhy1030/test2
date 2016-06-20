@@ -13,7 +13,7 @@ public class PlayerBetResult {
     Integer mXianDui = 0;
 
     public PlayerBetResult (String string) {
-        String[] firstSplit = string.split(";");
+        String[] firstSplit = string.replace(" ", "").split(";");
         for (int i = 0; i < firstSplit.length; i++) {
             Log.d("hongyu", "split i " + i + " is " + firstSplit[i]);
             String[] secondSplit  = firstSplit[i].split(":");

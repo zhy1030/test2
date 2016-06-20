@@ -39,9 +39,11 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
@@ -910,6 +912,10 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("hongyu", "game count is 0");
                 return;
             }
+
+            // calculate player gain in the set
+            Map<String, Integer> playerSetGain = new HashMap<String, Integer>();
+
             while (gameCursor.moveToNext()) {
                 gameNo = gameCursor.getInt(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameTBColumns.COLUMN_GAME_NUMBER));
                 gameTime = gameCursor.getString(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameTBColumns.COLUMN_TIME));
@@ -929,6 +935,35 @@ public class MainActivity extends AppCompatActivity {
                 // Insert the new row, returning the primary key value of the new row
                 mDb.insert(BaccaratDB.BaccaraGameHistoryTBColumns.TABLE_NAME, null, gameValues);
 
+                // parse the data
+                String[] firstSplit = gameStatShort.replace(" ", "").split(";");
+                for (int i = 0; i < firstSplit.length; i++) {
+                    Log.d("hongyu", "split i " + i + " is " + firstSplit[i]);
+                    String[] sencondSplit = firstSplit[i].split(":");
+                    if (playerSetGain.containsKey(sencondSplit[0])) {
+                        playerSetGain.put(sencondSplit[0], playerSetGain.get(sencondSplit[0]) + Integer.parseInt(sencondSplit[1]));
+                    } else {
+                        playerSetGain.put(sencondSplit[0], Integer.parseInt(sencondSplit[1]));
+                    }
+                }
+            }
+
+            // record the player gain
+            String player;
+            Integer playerGain;
+            Iterator iterator = playerSetGain.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry entry = (Map.Entry) iterator.next();
+                player = (String) entry.getKey();
+                playerGain = (Integer) entry.getValue();
+
+                Log.d("hongyu", "player gain parsed " + player + ":" + playerGain);
+                // insert into database
+                ContentValues gameValues = new ContentValues();
+                gameValues.put(BaccaratDB.BaccaraPlayerHistoryTBColumns.COLUMN_SET_ID, setID);
+                gameValues.put(BaccaratDB.BaccaraPlayerHistoryTBColumns.COLUMN_NAME, player);
+                gameValues.put(BaccaratDB.BaccaraPlayerHistoryTBColumns.COLUMN_PLAYER_GAIN, playerGain);
+                mDb.insert(BaccaratDB.BaccaraPlayerHistoryTBColumns.TABLE_NAME, null, gameValues);
             }
         }
         gameCursor.close();
@@ -937,6 +972,7 @@ public class MainActivity extends AppCompatActivity {
     private void nextSet() {
         // 保存数据
         recordSetData();
+
 
         TextView textView;
         EditText editText;

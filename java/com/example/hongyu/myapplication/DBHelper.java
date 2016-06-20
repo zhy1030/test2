@@ -23,6 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(BaccaratDB.CREATE_BaccaraPlayBetTB);
         db.execSQL(BaccaratDB.CREATE_BaccaraSetHistoryTB);
         db.execSQL(BaccaratDB.CREATE_BaccaraGameHistoryTB);
+        db.execSQL(BaccaratDB.CREATE_BaccaraPlayerHistoryTB);
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

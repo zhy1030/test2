@@ -65,6 +65,14 @@ public class BaccaratDB {
         public static final String COLUMN_STAT = "stat";
     }
 
+    // history: player历史数据
+    public static abstract class BaccaraPlayerHistoryTBColumns implements BaseColumns {
+        public static final String TABLE_NAME = "baccara_player_history";
+        public static final String COLUMN_SET_ID = "player_set_id";
+        public static final String COLUMN_NAME = "player_name";
+        public static final String COLUMN_PLAYER_GAIN = "player_gain";
+    }
+
     public static final String CREATE_BaccaraGameTB =
             "CREATE TABLE " + BaccaraGameTBColumns.TABLE_NAME + " (" +
                     BaccaraGameTBColumns._ID + " INTEGER PRIMARY KEY, " +
@@ -117,4 +125,11 @@ public class BaccaratDB {
                     BaccaraGameHistoryTBColumns.COLUMN_GAIN + " INTEGER, " +
                     BaccaraGameHistoryTBColumns.COLUMN_STAT_SHORT + " TEXT, " +
                     BaccaraGameHistoryTBColumns.COLUMN_STAT + " TEXT)";
+
+    public static final String CREATE_BaccaraPlayerHistoryTB =
+            "CREATE TABLE " + BaccaraPlayerHistoryTBColumns.TABLE_NAME + " (" +
+                    BaccaraPlayerHistoryTBColumns._ID + " INTEGER PRIMARY KEY, " +
+                    BaccaraPlayerHistoryTBColumns.COLUMN_SET_ID + " INTEGER, " +
+                    BaccaraPlayerHistoryTBColumns.COLUMN_NAME + " TEXT, " +
+                    BaccaraPlayerHistoryTBColumns.COLUMN_PLAYER_GAIN + " INTEGER)";
 }

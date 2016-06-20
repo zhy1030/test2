@@ -43,6 +43,50 @@ public class GameHistoryActivity extends AppCompatActivity {
         mDb = mDbHelper.getWritableDatabase();
 
 
+        // load player data
+        String[] playerProjection = {
+                BaccaratDB.BaccaraPlayerHistoryTBColumns.COLUMN_NAME,
+                BaccaratDB.BaccaraPlayerHistoryTBColumns.COLUMN_PLAYER_GAIN,
+        };
+        String playerOrder = BaccaratDB.BaccaraPlayerHistoryTBColumns.COLUMN_PLAYER_GAIN + " DESC";
+        String playerSelection = BaccaratDB.BaccaraPlayerHistoryTBColumns.COLUMN_SET_ID + "=" + mSetID;
+        Cursor playerCursor = mDb.query(
+                BaccaratDB.BaccaraPlayerHistoryTBColumns.TABLE_NAME,
+                playerProjection,
+                playerSelection,
+                null,
+                null,
+                null,
+                playerOrder
+        );
+        if (playerCursor != null) {
+            String player;
+            Integer playerGain;
+            TextView playerView;
+            TextView gainView;
+            Integer pos = 0;
+
+            while (playerCursor.moveToNext()) {
+                player = playerCursor.getString(playerCursor.getColumnIndex(BaccaratDB.BaccaraPlayerHistoryTBColumns.COLUMN_NAME));
+                playerGain = playerCursor.getInt(playerCursor.getColumnIndex(BaccaratDB.BaccaraPlayerHistoryTBColumns.COLUMN_PLAYER_GAIN));
+                if (pos < 11) {
+                    playerView = (TextView) findViewById(R.id.tbr1c1 + pos);
+                    gainView = (TextView) findViewById(R.id.tbr2c1 + pos);
+                } else if (pos < 22) {
+                    playerView = (TextView) findViewById(R.id.tbr3c1 + pos - 11);
+                    gainView = (TextView) findViewById(R.id.tbr4c1 + pos - 11);
+                } else {
+                    // Todo: add more table
+                    playerView = (TextView) findViewById(R.id.tbr3c1 + 10);
+                    gainView = (TextView) findViewById(R.id.tbr4c1 + 10);
+                }
+                playerView.setText(player);
+                gainView.setText(playerGain.toString());
+                pos++;
+            }
+        }
+
+
         // load game history in this set
         String[] gameProjection = {
                 BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_GAME_NUMBER,
