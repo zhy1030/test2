@@ -229,6 +229,7 @@ public class MainActivity extends AppCompatActivity {
                 "",
                 "庄对",
                 "闲对",
+                "庄闲对"
         };
         ArrayAdapter<String> spinnerDuiArrayAdapter = new ArrayAdapter<String>(
                 this,R.layout.spinner_item, gameDuiResutArray
@@ -609,7 +610,7 @@ public class MainActivity extends AppCompatActivity {
             switch (mGameResultDui) {
                 case "庄对":
                     if (playerBetResult.mZhuangDui != 0) {
-                        playerGain += playerBetResult.mZhuang * 11;
+                        playerGain += playerBetResult.mZhuangDui * 11;
                     }
                     playerGain -= playerBetResult.mXianDui;
                     break;
@@ -618,6 +619,14 @@ public class MainActivity extends AppCompatActivity {
                         playerGain += playerBetResult.mXianDui * 11;
                     }
                     playerGain -= playerBetResult.mZhuangDui;
+                    break;
+                case "庄闲对":
+                    if (playerBetResult.mZhuangDui != 0) {
+                        playerGain += playerBetResult.mZhuangDui * 11;
+                    }
+                    if (playerBetResult.mXianDui != 0) {
+                        playerGain += playerBetResult.mXianDui * 11;
+                    }
                     break;
                 default:
                     playerGain -= playerBetResult.mZhuangDui;

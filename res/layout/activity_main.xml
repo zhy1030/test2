@@ -131,7 +131,7 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="150dp"
+        android:layout_width="155dp"
         android:layout_height="345dp"
         android:layout_below="@+id/linearLayout"
         android:layout_alignParentLeft="true"
@@ -614,7 +614,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:background="@drawable/cell" />
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:text="结果"
                 android:id="@+id/jieguo"
@@ -630,7 +630,7 @@
                 android:gravity="center_horizontal|center_vertical"
                 android:background="@drawable/cell"/>
             <TextView
-                android:layout_width="870dp"
+                android:layout_width="850dp"
                 android:layout_height="wrap_content"
                 android:text="记录"
                 android:id="@+id/jilu"
@@ -663,7 +663,7 @@
                     android:layout_width="100dp"
                     android:layout_height="0dp"/>
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="0dp"/>
                 <TextView
                     android:layout_width="100dp"
