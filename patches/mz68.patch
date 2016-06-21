@@ -1,0 +1,66 @@
+diff --git a/res/layout/activity_game_history.xml b/res/layout/activity_game_history.xml
+index db94907..8aae4db 100644
+--- a/res/layout/activity_game_history.xml
++++ b/res/layout/activity_game_history.xml
+@@ -272,7 +272,7 @@
+                 android:gravity="center_horizontal|center_vertical"
+                 android:background="@drawable/cell"/>
+             <TextView
+-                android:layout_width="830dp"
++                android:layout_width="900dp"
+                 android:layout_height="wrap_content"
+                 android:text="记录"
+                 android:textSize="20dp"
+@@ -310,7 +310,7 @@
+                     android:layout_width="100dp"
+                     android:layout_height="0dp"/>
+                 <TextView
+-                    android:layout_width="830dp"
++                    android:layout_width="900dp"
+                     android:layout_height="0dp"
+                     android:id="@+id/stat_width_ref"/>
+             </TableRow>
+diff --git a/res/layout/activity_main.xml b/res/layout/activity_main.xml
+index f72c122..43f2d53 100644
+--- a/res/layout/activity_main.xml
++++ b/res/layout/activity_main.xml
+@@ -630,7 +630,7 @@
+                 android:gravity="center_horizontal|center_vertical"
+                 android:background="@drawable/cell"/>
+             <TextView
+-                android:layout_width="850dp"
++                android:layout_width="925dp"
+                 android:layout_height="wrap_content"
+                 android:text="记录"
+                 android:id="@+id/jilu"
+@@ -669,7 +669,7 @@
+                     android:layout_width="100dp"
+                     android:layout_height="0dp"/>
+                 <TextView
+-                    android:layout_width="850dp"
++                    android:layout_width="925dp"
+                     android:layout_height="0dp"
+                     android:id="@+id/stat_width_ref"/>
+             </TableRow>
+diff --git a/res/values/styles.xml b/res/values/styles.xml
+index 5358cb1..32c00e7 100644
+--- a/res/values/styles.xml
++++ b/res/values/styles.xml
+@@ -14,7 +14,7 @@
+         <item name="android:textSize">25dp</item>
+         <item name="android:ellipsize">end</item>
+         <item name="android:singleLine">true</item>
+-        <item name="android:layout_width">110dp</item>
++        <item name="android:layout_width">118dp</item>
+     </style>
+ 
+     <style name="TextViewStyle2">
+@@ -28,7 +28,7 @@
+ 
+ 
+         <item name="android:textSize">20dp</item>
+-        <item name="android:layout_width">104dp</item>
++        <item name="android:layout_width">110dp</item>
+         <item name="android:layout_height">wrap_content</item>
+         <item name="android:gravity">center</item>
+     </style>
