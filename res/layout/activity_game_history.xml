@@ -20,88 +20,52 @@
             android:layout_height="wrap_content"
             android:background="#dedcd2" >
             <TextView
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
+                style="@style/TextViewStyle3"
                 android:text="玩家"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
                 android:background="@drawable/cell" />
             <TextView
                 android:id="@+id/tbr1c1"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell" />
             <TextView
                 android:id="@+id/tbr1c2"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr1c3"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr1c4"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr1c5"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr1c6"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr1c7"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr1c8"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr1c9"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr1c10"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr1c11"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
         </TableRow>
 
@@ -110,88 +74,52 @@
             android:layout_height="wrap_content"
             android:background="#dedcd2" >
             <TextView
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
                 android:text="输赢"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell" />
             <TextView
                 android:id="@+id/tbr2c1"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell" />
             <TextView
                 android:id="@+id/tbr2c2"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr2c3"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr2c4"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr2c5"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr2c6"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr2c7"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr2c8"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr2c9"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr2c10"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr2c11"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
         </TableRow>
 
@@ -201,88 +129,52 @@
             android:background="#dedcd2"
             android:layout_marginTop="3dp">
             <TextView
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
+                style="@style/TextViewStyle3"
                 android:text="玩家"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
                 android:background="@drawable/cell" />
             <TextView
                 android:id="@+id/tbr3c1"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell" />
             <TextView
                 android:id="@+id/tbr3c2"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr3c3"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr3c4"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr3c5"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr3c6"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr3c7"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr3c8"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr3c9"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr3c10"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr3c11"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
         </TableRow>
 
@@ -291,88 +183,52 @@
             android:layout_height="wrap_content"
             android:background="#dedcd2" >
             <TextView
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
                 android:text="输赢"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell" />
             <TextView
                 android:id="@+id/tbr4c1"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell" />
             <TextView
                 android:id="@+id/tbr4c2"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr4c3"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr4c4"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr4c5"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr4c6"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr4c7"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr4c8"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr4c9"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr4c10"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
             <TextView
                 android:id="@+id/tbr4c11"
-                android:layout_width="104dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal|center_vertical"
+                style="@style/TextViewStyle3"
                 android:background="@drawable/cell"/>
         </TableRow>
     </TableLayout>
