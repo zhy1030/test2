@@ -4,6 +4,6 @@
     android:layout_width="70dp"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:textSize="20sp"
+    android:textSize="20dp"
     android:padding="3dp"
     />

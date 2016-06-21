@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
       "115ee591b7e505ac", // Samsung tab E
       "8a9c713404bc3c2e", // Samsung tab E
       "1a2318349d2b2e53", // x16
+      "bb159e3d08f8339d", // mz68
     };
 
     @Override
