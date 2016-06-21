@@ -887,6 +887,7 @@ public class MainActivity extends AppCompatActivity {
                 BaccaratDB.BaccaraGameTBColumns.COLUMN_GAME_NUMBER,
                 BaccaratDB.BaccaraGameTBColumns.COLUMN_TIME,
                 BaccaratDB.BaccaraGameTBColumns.COLUMN_RESULT,
+                BaccaratDB.BaccaraGameTBColumns.COLUMN_RESULT_DUI,
                 BaccaratDB.BaccaraGameTBColumns.COLUMN_GAIN,
                 BaccaratDB.BaccaraGameTBColumns.COLUMN_STAT,
                 BaccaratDB.BaccaraGameTBColumns.COLUMN_STAT_SHORT,
@@ -906,6 +907,7 @@ public class MainActivity extends AppCompatActivity {
             Integer gameNo;
             String gameTime;
             String gameResult;
+            String gameResultDui;
             Integer gameGain;
             String gameStat;
             String gameStatShort;
@@ -921,6 +923,7 @@ public class MainActivity extends AppCompatActivity {
                 gameNo = gameCursor.getInt(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameTBColumns.COLUMN_GAME_NUMBER));
                 gameTime = gameCursor.getString(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameTBColumns.COLUMN_TIME));
                 gameResult = gameCursor.getString(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameTBColumns.COLUMN_RESULT));
+                gameResultDui = gameCursor.getString(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameTBColumns.COLUMN_RESULT_DUI));
                 gameGain = gameCursor.getInt(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameTBColumns.COLUMN_GAIN));
                 gameStat = gameCursor.getString(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameTBColumns.COLUMN_STAT));
                 gameStatShort = gameCursor.getString(gameCursor.getColumnIndex(BaccaratDB.BaccaraGameTBColumns.COLUMN_STAT_SHORT));
@@ -930,6 +933,7 @@ public class MainActivity extends AppCompatActivity {
                 gameValues.put(BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_GAME_NUMBER, gameNo);
                 gameValues.put(BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_TIME, gameTime);
                 gameValues.put(BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_RESULT, gameResult);
+                gameValues.put(BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_RESULT_DUI, gameResultDui);
                 gameValues.put(BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_GAIN, gameGain);
                 gameValues.put(BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_STAT, gameStat);
                 gameValues.put(BaccaratDB.BaccaraGameHistoryTBColumns.COLUMN_STAT_SHORT, gameStatShort);
