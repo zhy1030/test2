@@ -807,6 +807,7 @@ public class MainActivity extends AppCompatActivity {
         mGameGain = 0;
         mGameStat = "";
         mGameStatShort = "";
+
     }
 
     private void resetSet() {
@@ -827,6 +828,7 @@ public class MainActivity extends AppCompatActivity {
         textView.setText(mSetTime);
         textView = (TextView) findViewById(R.id.cur_set_recorder);
         textView.setText(mSetRecorder);
+        mSetGain = 0;
         textView = (TextView) findViewById(R.id.cur_set_gain);
         textView.setText(mSetGain.toString());
 
