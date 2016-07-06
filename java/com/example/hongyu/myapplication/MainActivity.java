@@ -1113,12 +1113,24 @@ public class MainActivity extends AppCompatActivity {
         // 保存数据
         recordSetData();
 
+        // set number++
+        mSetNumber++;
+
+        // reset set and game views
+        resetSetViews();
+
+        // clean game data base
+        mDb.delete(BaccaratDB.BaccaraGameTBColumns.TABLE_NAME, null, null);
+        cleanResultRows();
+    }
+
+    private void resetSetViews() {
 
         TextView textView;
         EditText editText;
         Spinner spinner;
         // init set info
-        mSetNumber++;
+
         textView = (TextView) findViewById(R.id.cur_set_number);
         textView.setText(mSetNumber.toString());
         Calendar c = Calendar.getInstance();
@@ -1153,9 +1165,6 @@ public class MainActivity extends AppCompatActivity {
             textView = (TextView) findViewById(R.id.tbr7c1 + i);
             textView.setText("");
         }
-        // clean game data base
-        mDb.delete(BaccaratDB.BaccaraGameTBColumns.TABLE_NAME, null, null);
-        cleanResultRows();
     }
 
     private void saveCurrent() {
@@ -1337,7 +1346,11 @@ public class MainActivity extends AppCompatActivity {
             Integer gameGain;
             String gameStat;
             if (gameCursor.getCount() == 0) {
-                Log.e("hongyu", "game count is 0");
+                Log.d("hongyu", "game count is 0");
+
+                // it is a new set. reset the time and players
+                resetSetViews();
+
                 return;
             }
             while (gameCursor.moveToNext()) {
