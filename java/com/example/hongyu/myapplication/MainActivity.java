@@ -85,11 +85,16 @@ public class MainActivity extends AppCompatActivity {
     private Integer mSetGain = 0;
 
     private final String[] mDeviceList = {
-      "c6fe903235b06716", // 虚拟机
-      "115ee591b7e505ac", // Samsung tab E
-      "8a9c713404bc3c2e", // Samsung tab E
-      "1a2318349d2b2e53", // x16
-      "bb159e3d08f8339d", // mz68
+        "c6fe903235b06716", // 虚拟机
+        "115ee591b7e505ac", // Samsung tab E
+        "8a9c713404bc3c2e", // Samsung tab E
+        "1a2318349d2b2e53", // x16
+        "bb159e3d08f8339d", // mz68
+
+        "688b959cb8004532", // x16
+        "cb2609546d240ed6", // x16
+        "ae61136e9dcb5c24", // x16
+        "4a6c138e4845dd", // x16
     };
 
     @Override
