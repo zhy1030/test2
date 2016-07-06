@@ -1016,6 +1016,14 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.game_number);
         textView.setText(mGameNo.toString());
         for (int i = 0; i < 9; i++) {
+            textView = (TextView) findViewById(R.id.tbr2c1 + i);
+            textView.setText("");
+        }
+        for (int i = 0; i < 9; i++) {
+            textView = (TextView) findViewById(R.id.tbr6c1 + i);
+            textView.setText("");
+        }
+        for (int i = 0; i < 9; i++) {
             textView = (TextView) findViewById(R.id.tbr3c1 + i);
             textView.setText("");
         }
