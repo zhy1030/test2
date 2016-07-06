@@ -479,11 +479,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        editTextZhuang.setText(playerBetResult.mZhuang.toString());
-        editTextXian.setText(playerBetResult.mXian.toString());
-        editTextHe.setText(playerBetResult.mHe.toString());
-        editTextZhuangDui.setText(playerBetResult.mZhuangDui.toString());
-        editTextXiandui.setText(playerBetResult.mXianDui.toString());
+        if (playerBetResult.mZhuang == 0) {
+            editTextZhuang.setText("");
+        } else {
+            editTextZhuang.setText(playerBetResult.mZhuang.toString());
+        }
+
+        if (playerBetResult.mXian == 0) {
+            editTextXian.setText("");
+        } else {
+            editTextXian.setText(playerBetResult.mXian.toString());
+        }
+
+        if (playerBetResult.mHe == 0) {
+            editTextHe.setText("");
+        } else {
+            editTextHe.setText(playerBetResult.mHe.toString());
+        }
+
+        if (playerBetResult.mZhuangDui == 0) {
+            editTextZhuangDui.setText("");
+        } else {
+            editTextZhuangDui.setText(playerBetResult.mZhuangDui.toString());
+        }
+
+        if (playerBetResult.mXianDui == 0) {
+            editTextXiandui.setText("");
+        } else {
+            editTextXiandui.setText(playerBetResult.mXianDui.toString());
+        }
 
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             @Override
