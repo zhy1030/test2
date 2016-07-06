@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
         // init buttons
         mBtnSetEdit = (Button) findViewById(R.id.set_edit);
-        mBtnSetClean = (Button) findViewById(R.id.set_clean);
+        //mBtnSetClean = (Button) findViewById(R.id.set_clean);
         mBtnSetEnd = (Button) findViewById(R.id.set_end);
         mBtnSetHistory = (Button) findViewById(R.id.set_history);
         mBtnPlayerEdit = (Button) findViewById(R.id.player_edit);
@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 showSetEditDialog();
             }
         });
+        /*
         mBtnSetClean.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        */
         mBtnSetEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
