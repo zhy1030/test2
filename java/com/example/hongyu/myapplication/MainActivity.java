@@ -467,6 +467,12 @@ public class MainActivity extends AppCompatActivity {
         final EditText editTextZhuangDui = (EditText) mPlayerBetView.findViewById(R.id.player_bet_zhuangdui);
         final EditText editTextXiandui = (EditText) mPlayerBetView.findViewById(R.id.player_bet_xiandui);
         final Button cleanBtn = (Button) mPlayerBetView.findViewById(R.id.clean_btn);
+        final Button btn100 = (Button) mPlayerBetView.findViewById(R.id.btn_100);
+        final Button btn500 = (Button) mPlayerBetView.findViewById(R.id.btn_500);
+        final Button btn1000 = (Button) mPlayerBetView.findViewById(R.id.btn_1000);
+        final Button btn5000 = (Button) mPlayerBetView.findViewById(R.id.btn_5000);
+        final Button btn10000 = (Button) mPlayerBetView.findViewById(R.id.btn_10000);
+        final Button btn50000 = (Button) mPlayerBetView.findViewById(R.id.btn_50000);
 
         cleanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -478,6 +484,98 @@ public class MainActivity extends AppCompatActivity {
                 editTextXiandui.setText("");
             }
         });
+
+        btn100.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText editText = (EditText) mPlayerBetView.findFocus();
+                Integer number;
+                if (editText.getText().toString().equals("")) {
+                    number = 100;
+                } else {
+                    number = Integer.parseInt(editText.getText().toString());
+                    number += 100;
+                }
+                editText.setText(number.toString());
+            }
+        });
+
+        btn500.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText editText = (EditText) mPlayerBetView.findFocus();
+                Integer number;
+                if (editText.getText().toString().equals("")) {
+                    number = 500;
+                } else {
+                    number = Integer.parseInt(editText.getText().toString());
+                    number += 500;
+                }
+                editText.setText(number.toString());
+            }
+        });
+
+        btn1000.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText editText = (EditText) mPlayerBetView.findFocus();
+                Integer number;
+                if (editText.getText().toString().equals("")) {
+                    number = 1000;
+                } else {
+                    number = Integer.parseInt(editText.getText().toString());
+                    number += 1000;
+                }
+                editText.setText(number.toString());
+            }
+        });
+
+        btn5000.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText editText = (EditText) mPlayerBetView.findFocus();
+                Integer number;
+                if (editText.getText().toString().equals("")) {
+                    number = 5000;
+                } else {
+                    number = Integer.parseInt(editText.getText().toString());
+                    number += 5000;
+                }
+                editText.setText(number.toString());
+            }
+        });
+
+        btn10000.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText editText = (EditText) mPlayerBetView.findFocus();
+                Integer number;
+                if (editText.getText().toString().equals("")) {
+                    number = 10000;
+                } else {
+                    number = Integer.parseInt(editText.getText().toString());
+                    number += 10000;
+                }
+                editText.setText(number.toString());
+            }
+        });
+
+        btn50000.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText editText = (EditText) mPlayerBetView.findFocus();
+                Integer number;
+                if (editText.getText().toString().equals("")) {
+                    number = 50000;
+                } else {
+                    number = Integer.parseInt(editText.getText().toString());
+                    number += 50000;
+                }
+                editText.setText(number.toString());
+            }
+        });
+
+
 
         if (playerBetResult.mZhuang == 0) {
             editTextZhuang.setText("");
