@@ -808,6 +808,15 @@ public class MainActivity extends AppCompatActivity {
         mGameStat = "";
         mGameStatShort = "";
 
+        for (int i = 0; i < 9; i++) {
+            textView = (TextView) findViewById(R.id.tbr3c1 + i);
+            textView.setText("");
+        }
+        for (int i = 0; i < 9; i++) {
+            textView = (TextView) findViewById(R.id.tbr7c1 + i);
+            textView.setText("");
+        }
+
     }
 
     private void resetSet() {
