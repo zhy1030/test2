@@ -102,7 +102,7 @@
             android:layout_width ="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
-            android:text="修改"
+            android:text="设置"
             android:id="@+id/set_edit"
             android:textSize="20dp"/>
 
