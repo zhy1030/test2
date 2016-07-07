@@ -21,10 +21,10 @@ index db94907..8ff9718 100644
                      android:id="@+id/stat_width_ref"/>
              </TableRow>
 diff --git a/res/layout/activity_main.xml b/res/layout/activity_main.xml
-index f72c122..108abbb 100644
+index 2eee4cd..f2a023d 100644
 --- a/res/layout/activity_main.xml
 +++ b/res/layout/activity_main.xml
-@@ -630,7 +630,7 @@
+@@ -624,7 +624,7 @@
                  android:gravity="center_horizontal|center_vertical"
                  android:background="@drawable/cell"/>
              <TextView
@@ -33,7 +33,7 @@ index f72c122..108abbb 100644
                  android:layout_height="wrap_content"
                  android:text="记录"
                  android:id="@+id/jilu"
-@@ -669,7 +669,7 @@
+@@ -663,7 +663,7 @@
                      android:layout_width="100dp"
                      android:layout_height="0dp"/>
                  <TextView
