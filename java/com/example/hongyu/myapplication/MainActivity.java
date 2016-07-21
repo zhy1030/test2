@@ -95,6 +95,10 @@ public class MainActivity extends AppCompatActivity {
         "cb2609546d240ed6", // x16
         "ae61136e9dcb5c24", // x16
         "4a6c138e4845dd", // x16
+
+        "6337ff876a6c6ee", // Samsung tab E
+        "9cb0105396783c60", // Samsung tab E
+        "a09cecc1a9b7dc59", // Samsung tab E
     };
 
     @Override
@@ -726,8 +730,8 @@ public class MainActivity extends AppCompatActivity {
                     if (playerBetResult.mHe != 0) {
                         playerGain += playerBetResult.mHe*8;
                     }
-                    playerGain -= playerBetResult.mZhuang;
-                    playerGain -= playerBetResult.mXian;
+                    // playerGain -= playerBetResult.mZhuang;
+                    // playerGain -= playerBetResult.mXian;
                     break;
                 case "庄6点":
                     if (playerBetResult.mZhuang != 0) {
